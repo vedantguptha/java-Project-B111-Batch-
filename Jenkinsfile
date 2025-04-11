@@ -6,6 +6,9 @@ pipeline{
     environment {
               APP_NAME = "loginregisterapp-1.0.0" 
     }
+    parameters {
+        string(name: 'APP_VERSION', defaultValue: '1.0.0', description: 'Enter App Version')
+    }
     stages{
         stage('Clean') {
             steps {
@@ -34,7 +37,7 @@ pipeline{
         }
         stage('Artifactory') {
             steps {
-                sh 'aws s3 cp $WORKSPACE/target/*.war s3://b111-lapw-labs/${APP_NAME}.war'
+                sh 'aws s3 cp $WORKSPACE/target/*.war s3://b111-lapw-labs/${APP_NAME}-${params.APP_VERSION}.war'
             }
         }   
     }
