@@ -4,7 +4,7 @@ pipeline{
          maven "maven"
     }
     environment {
-              APP_NAME = "loginregisterapp-1.0.0" 
+              APP_NAME = "loginregisterapp" 
     }
     parameters {
         string(name: 'APP_VERSION', defaultValue: '1.0.0', description: 'Enter App Version')
@@ -33,6 +33,11 @@ pipeline{
         stage ('Package') {
             steps {
                 sh 'mvn package'
+            }  
+        }
+        stage ('Print Version number') {
+            steps {
+                 echo "New Application Version -, ${params.APP_VERSION}"
             }  
         }
         stage('Artifactory') {
