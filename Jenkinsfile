@@ -42,7 +42,7 @@ pipeline{
         }
         stage('Artifactory') {
             steps {
-                sh 'aws s3 cp $WORKSPACE/target/*.war s3://b111-lapw-labs/${APP_NAME}-${params.APP_VERSION}.war'
+                sh "aws s3 cp $WORKSPACE/target/*.war s3://b111-lapw-labs/${APP_NAME}-${params.APP_VERSION}.war"
             }
         }   
     }
