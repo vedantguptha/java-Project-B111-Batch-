@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage ("Code Commit"){
             steps{
-                echo "Code Commit"
+                git changelog: false, poll: false, url: 'https://github.com/vedantguptha/java-Project-B111-Batch-.git'
             }
         }
     }
